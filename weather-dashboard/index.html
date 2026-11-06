@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search current weather and a five-day forecast by city.">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">WEATHER AT A GLANCE</p>
+        <h1>Weather Dashboard</h1>
+        <p class="subtitle">Current conditions and a five-day forecast</p>
+      </div>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle theme">🌙 Dark</button>
+    </header>
+
+    <section class="search-panel" aria-label="Search weather">
+      <form class="search-form" id="searchForm">
+        <label class="sr-only" for="cityInput">City name</label>
+        <input id="cityInput" type="text" placeholder="Search a city (e.g. Kochi)" autocomplete="off">
+        <button class="primary-btn" type="submit">Search weather</button>
+      </form>
+      <p class="helper-text">Try Kochi, Malappuram, Delhi or London.</p>
+    </section>
+
+    <p class="status" id="statusMsg" aria-live="polite"></p>
+    <div class="error" id="errorMsg" role="alert"></div>
+    <div class="loading" id="loading" aria-live="polite">
+      <span class="spinner"></span>
+      <span>Getting the latest weather...</span>
+    </div>
+
+    <section class="weather-card" id="weatherCard" aria-label="Current weather" hidden>
+      <div class="weather-top">
+        <div>
+          <p class="section-kicker">CURRENT WEATHER</p>
+          <h2 id="cityName">City</h2>
+          <p class="muted" id="currentDate"></p>
+        </div>
+        <button class="favorite-main-btn" id="favoriteBtn" type="button">☆ Add favorite</button>
+      </div>
+
+      <div class="current-weather">
+        <div class="weather-icon" id="weatherEmoji" aria-hidden="true">🌤️</div>
+        <div>
+          <p class="temperature" id="temperature">--°</p>
+          <p class="condition" id="description">Weather condition</p>
+          <p class="muted" id="feelsLike">Feels like --°C</p>
+        </div>
+      </div>
+
+      <div class="weather-details">
+        <article class="detail-tile">
+          <span class="detail-icon">💧</span>
+          <div><p class="muted">Humidity</p><strong id="humidity">--%</strong></div>
+        </article>
+        <article class="detail-tile">
+          <span class="detail-icon">💨</span>
+          <div><p class="muted">Wind speed</p><strong id="windSpeed">-- m/s</strong></div>
+        </article>
+        <article class="detail-tile">
+          <span class="detail-icon">🌡️</span>
+          <div><p class="muted">Feels like</p><strong id="feelsLikeDetail">--°C</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="forecast-section" id="forecastSection" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">PLAN AHEAD</p>
+          <h2>5-Day Forecast</h2>
+        </div>
+        <span class="muted small-text">Daily outlook</span>
+      </div>
+      <div class="forecast-grid" id="forecastList"></div>
+    </section>
+
+    <section class="favorites-section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">YOUR SAVED PLACES</p>
+          <h2>Favorite cities</h2>
+        </div>
+        <span class="muted small-text">Saved on this device</span>
+      </div>
+      <div class="favorites-list" id="favoritesList">
+        <p class="empty-favorites">No favorite cities yet. Search for a city and add it here.</p>
+      </div>
+    </section>
+
+    <footer class="footer">Weather data provided by OpenWeatherMap.</footer>
+  </main>
+</body>
+</html>
